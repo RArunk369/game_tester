@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0718"><meta name="description" content="IMPOSTER — a neon real-time social deduction party game.">
+  <title>IMPOSTER — Trust No One</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="bg-glow glow-one"></div><div class="bg-glow glow-two"></div>
+  <main class="app-shell">
+    <header class="topbar"><a class="brand" href="/" aria-label="Imposter home"><span class="brand-mark">◈</span> IMPOSTER</a><div class="top-tag"><span class="live-dot"></span> TRUST NO ONE</div></header>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <section id="home" class="screen hero-screen">
+      <div class="eyebrow"><span class="eyebrow-line"></span> SOCIAL DEDUCTION / MULTIPLAYER <span class="eyebrow-line"></span></div>
+      <h1>TRUST<br><span>NO ONE.</span></h1><p class="hero-copy">One secret word. One hidden imposter.<br>Can your friends spot the liar?</p>
+      <div class="panel home-panel">
+        <label for="nickname">YOUR CODENAME</label><input id="nickname" maxlength="18" autocomplete="nickname" placeholder="Enter a nickname" />
+        <button id="createBtn" class="btn btn-primary">CREATE A ROOM <span>↗</span></button>
+        <div class="or-line"><span></span> OR JOIN YOUR CREW <span></span></div>
+        <div class="join-row"><input id="roomCode" maxlength="6" placeholder="ROOM CODE" aria-label="Room code" autocapitalize="characters"/><button id="joinBtn" class="btn btn-secondary">JOIN</button></div>
+        <p class="tiny-note">2–8 PLAYERS · 3 ROUNDS · ZERO TRUST</p>
+      </div>
+      <div class="how-strip"><div><b>01</b><span>GET YOUR<br>SECRET ROLE</span></div><div><b>02</b><span>DROP A<br>SUBTLE CLUE</span></div><div><b>03</b><span>FIND THE<br>IMPOSTER</span></div></div>
+    </section>
+    <section id="game" class="screen hidden">
+      <div class="game-heading"><div><div class="eyebrow">PRIVATE GAME ROOM</div><h2 id="phaseTitle">THE LOBBY</h2></div><div class="round-chip" id="roundChip">ROUND — / 3</div></div>
+      <div class="room-banner"><div><span class="tiny-label">ROOM CODE</span><strong id="codeDisplay">------</strong></div><button id="copyCode" class="btn btn-small btn-secondary">COPY CODE</button></div>
+      <div id="roleCard" class="role-card hidden"></div>
+      <div id="messageBox" class="message-box">Waiting for players to join.</div>
+      <div class="section-heading"><h3>PLAYERS <span id="playerCount">0/8</span></h3><span class="tiny-label">LIVE LOBBY</span></div>
+      <div id="playersList" class="players-grid"></div>
+      <section id="clueSection" class="panel action-panel hidden"><div class="section-heading"><h3>DROP YOUR CLUE</h3><span class="tiny-label">ONE CLUE ONLY</span></div><p class="muted">Give a short hint. Don't say the secret word.</p><form id="clueForm" class="stack-form"><input id="clueInput" maxlength="80" placeholder="Type your clue..." required/><button class="btn btn-primary" type="submit">SUBMIT CLUE ↗</button></form></section>
+      <section id="cluesSection" class="panel action-panel hidden"><div class="section-heading"><h3>CLUE BOARD</h3><span class="tiny-label" id="clueProgress">0 CLUES</span></div><div id="cluesList" class="clues-list"></div></section>
+      <section id="voteSection" class="panel action-panel hidden"><div class="section-heading"><h3>WHO'S THE IMPOSTER?</h3><span class="tiny-label">VOTE PRIVATELY</span></div><div id="voteOptions" class="vote-options"></div><p id="voteStatus" class="muted"></p></section>
+      <section id="guessSection" class="panel action-panel hidden"><div class="section-heading"><h3>FINAL GUESS</h3><span class="tiny-label">IMPOSTER ONLY</span></div><p class="muted">You were caught. Guess the secret word to earn 2 points.</p><form id="guessForm" class="stack-form"><input id="guessInput" maxlength="80" placeholder="What is the secret word?" required/><button class="btn btn-primary" type="submit">LOCK IN GUESS</button></form></section>
+      <section id="resultsSection" class="panel action-panel hidden"><div class="result-top"><span class="result-icon">✦</span><div><div class="eyebrow">ROUND COMPLETE</div><h3 id="resultTitle">THE TRUTH IS OUT</h3></div></div><div id="resultDetails" class="result-details"></div><div class="section-heading"><h3>LEADERBOARD</h3><span class="tiny-label">TOTAL POINTS</span></div><div id="scoreList" class="score-list"></div><button id="nextBtn" class="btn btn-primary full-width">NEXT ROUND ↗</button></section>
+      <div class="lobby-footer"><span>◈ IMPOSTER / NEON EDITION</span><button id="leaveBtn" class="text-button">LEAVE ROOM</button></div>
+    </section>
+    <footer class="site-footer">MADE FOR FRIENDS WHO TRUST TOO EASILY <span>●</span></footer>
+  </main>
+  <script src="/socket-client.js"></script><script src="/client.js"></script>
+</body></html>
